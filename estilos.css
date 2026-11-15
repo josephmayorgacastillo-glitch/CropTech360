@@ -1,0 +1,624 @@
+
+/* =====================================================
+   CropTech 360 - ESTILOS GENERALES
+===================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f3f7f2;
+    color: #26382b;
+    line-height: 1.6;
+}
+
+
+/* =====================================================
+   ANIMACIÓN DE ENTRADA
+===================================================== */
+
+body.animacion-entrada {
+    animation: entradaPagina 1.2s ease;
+}
+
+@keyframes entradaPagina {
+    from {
+        opacity: 0;
+        transform: translateY(15px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* =====================================================
+   ENCABEZADO
+===================================================== */
+
+header {
+    background-color: #174d32;
+    color: white;
+    padding: 18px 6%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+header h1 {
+    font-size: 27px;
+    letter-spacing: 1px;
+}
+
+nav {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+nav a:hover {
+    color: #b8e6a5;
+}
+
+
+/* =====================================================
+   SECCIONES GENERALES
+===================================================== */
+
+section {
+    padding: 55px 7%;
+}
+
+section h2 {
+    color: #174d32;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+section p {
+    margin-bottom: 15px;
+}
+
+
+/* =====================================================
+   BIENVENIDA
+===================================================== */
+
+#inicio {
+    background: linear-gradient(
+        135deg,
+        #174d32,
+        #398451
+    );
+
+    color: white;
+    text-align: center;
+    padding: 90px 10%;
+}
+
+#inicio h2 {
+    color: white;
+    font-size: 38px;
+}
+
+#inicio p {
+    font-size: 18px;
+    max-width: 750px;
+    margin: 15px auto;
+}
+
+
+/* =====================================================
+   BOTONES GENERALES
+===================================================== */
+
+button {
+    border: none;
+    border-radius: 8px;
+    padding: 12px 20px;
+    background-color: #267447;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: #174d32;
+    transform: translateY(-2px);
+}
+
+button:disabled {
+    background-color: #aab8ac;
+    cursor: not-allowed;
+    transform: none;
+}
+
+
+/* =====================================================
+   MAPA Y SELECTOR DE CULTIVOS
+===================================================== */
+
+#mapa {
+    background-color: white;
+}
+
+.contenedor-mapa-selector {
+    display: flex;
+    gap: 25px;
+    margin-top: 15px;
+    align-items: stretch;
+}
+
+.selector-cultivo {
+    flex: 1;
+    max-width: 320px;
+    background-color: #f3f7f2;
+    padding: 22px;
+    border-radius: 12px;
+    border: 1px solid #dce9dc;
+}
+
+.selector-cultivo h3 {
+    color: #174d32;
+    margin-bottom: 15px;
+}
+
+.selector-cultivo label {
+    display: block;
+    margin: 12px 0 6px;
+    font-weight: 600;
+}
+
+.selector-cultivo select {
+    width: 100%;
+    padding: 11px;
+    border: 1px solid #cbd9cb;
+    border-radius: 7px;
+    background-color: white;
+    margin-bottom: 12px;
+}
+
+#zona-recomendada-info {
+    margin-top: 12px;
+    padding: 12px;
+    background-color: #e4f2e5;
+    border-radius: 7px;
+    font-size: 14px;
+}
+
+#mapa-interactivo {
+    flex: 2;
+    width: 100%;
+    height: 450px;
+    border-radius: 12px;
+    border: 2px solid #dce9dc;
+    z-index: 1;
+}
+
+
+/* =====================================================
+   COMPARACIÓN DE PARCELAS
+===================================================== */
+
+#seleccionar-a,
+#seleccionar-b {
+    margin: 8px 4px 8px 0;
+}
+
+.parcela-activa {
+    background-color: #174d32 !important;
+    outline: 3px solid #a7d8a5;
+}
+
+#coordenadas-a,
+#coordenadas-b {
+    display: block;
+    background-color: white;
+    border-radius: 6px;
+    padding: 8px;
+    margin: 5px 0 12px;
+    font-size: 13px;
+    overflow-wrap: anywhere;
+}
+
+#resultado-comparacion {
+    margin-top: 20px;
+    padding: 15px;
+    background-color: #f3f7f2;
+    border-radius: 10px;
+}
+
+.resultado-parcelas {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 18px;
+}
+
+.tarjeta-comparacion {
+    background-color: white;
+    padding: 18px;
+    border-radius: 10px;
+    border: 1px solid #dce9dc;
+}
+
+.tarjeta-comparacion h3 {
+    color: #267447;
+    margin-bottom: 12px;
+}
+
+.tarjeta-comparacion p {
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+.ganador-comparacion {
+    margin-top: 18px;
+    padding: 18px;
+    background-color: #e4f2e5;
+    border-radius: 10px;
+}
+
+.mensaje-error {
+    color: #b3261e;
+    font-weight: bold;
+}
+
+
+/* =====================================================
+   DATOS CLIMÁTICOS
+===================================================== */
+
+#clima {
+    background-color: #edf5ed;
+}
+
+.contenedor-clima {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.tarjeta-clima {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.tarjeta-clima h3 {
+    color: #267447;
+    margin-bottom: 10px;
+}
+
+.tarjeta-clima p {
+    font-size: 25px;
+    font-weight: bold;
+    color: #174d32;
+}
+
+
+/* =====================================================
+   SEMÁFORO DE RIESGOS
+===================================================== */
+
+#riesgos {
+    background-color: white;
+}
+
+.contenedor-riesgos {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.riesgo {
+    padding: 25px;
+    text-align: center;
+    border-radius: 12px;
+    opacity: 0.65;
+    transition: 0.3s;
+}
+
+.riesgo.verde {
+    background-color: #d8f3dc;
+    border: 2px solid #2d9d52;
+}
+
+.riesgo.amarillo {
+    background-color: #fff3cd;
+    border: 2px solid #e0ad21;
+}
+
+.riesgo.rojo {
+    background-color: #f8d7da;
+    border: 2px solid #d94343;
+}
+
+.riesgo.activo {
+    opacity: 1;
+    transform: scale(1.03);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.12);
+}
+
+#resultado-riesgo {
+    margin-top: 22px;
+    padding: 18px;
+    background-color: #f3f7f2;
+    border-radius: 9px;
+}
+
+
+/* =====================================================
+   RECOMENDACIONES AGRÍCOLAS
+===================================================== */
+
+#recomendaciones {
+    background-color: #edf5ed;
+}
+
+#lista-recomendaciones {
+    padding-left: 25px;
+}
+
+#lista-recomendaciones li {
+    margin-bottom: 12px;
+    padding: 12px;
+    background-color: white;
+    border-radius: 7px;
+}
+
+
+/* =====================================================
+   ALERTAS DE ENFERMEDADES
+===================================================== */
+
+.panel-enfermedades {
+    margin-top: 30px;
+    padding: 25px;
+    background-color: white;
+    border-radius: 12px;
+    border-left: 5px solid #267447;
+}
+
+.panel-enfermedades h2 {
+    font-size: 23px;
+}
+
+.alerta-enfermedad {
+    margin: 12px 0;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+.alerta-enfermedad p {
+    margin-top: 8px;
+}
+
+.alerta-enfermedad.alto {
+    background-color: #f8d7da;
+    border-left: 5px solid #c62828;
+}
+
+.alerta-enfermedad.moderado {
+    background-color: #fff3cd;
+    border-left: 5px solid #e0ad21;
+}
+
+.alerta-enfermedad.bajo {
+    background-color: #d8f3dc;
+    border-left: 5px solid #2d9d52;
+}
+
+.panel-enfermedades small {
+    display: block;
+    margin-top: 15px;
+    color: #657267;
+}
+
+
+/* =====================================================
+   SIMULADOR DE ROTACIÓN DE CULTIVOS
+===================================================== */
+
+#simulador {
+    background-color: white;
+}
+
+#simulador select {
+    padding: 12px;
+    border: 1px solid #cbd9cb;
+    border-radius: 7px;
+    margin-right: 10px;
+    min-width: 180px;
+}
+
+#resultados-simulacion {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #f3f7f2;
+    border-radius: 10px;
+}
+
+#resultados-simulacion li {
+    margin: 10px 0;
+}
+
+#grafico-rotacion {
+    width: 100%;
+    max-height: 350px;
+    margin-top: 25px;
+}
+
+
+/* =====================================================
+   TARJETAS Y ELEMENTOS GENERALES
+===================================================== */
+
+.card {
+    background-color: white;
+    padding: 22px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+
+/* =====================================================
+   PIE DE PÁGINA
+===================================================== */
+
+footer {
+    background-color: #174d32;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+footer p {
+    margin: 5px 0;
+}
+
+
+/* =====================================================
+   RESPONSIVE - TABLETAS
+===================================================== */
+
+@media (max-width: 992px) {
+
+    .contenedor-mapa-selector {
+        flex-direction: column;
+    }
+
+    .selector-cultivo {
+        max-width: 100%;
+    }
+
+    #mapa-interactivo {
+        height: 400px;
+    }
+
+    .contenedor-clima {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE - CELULARES
+===================================================== */
+
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    nav {
+        justify-content: center;
+    }
+
+    section {
+        padding: 35px 5%;
+    }
+
+    #inicio {
+        padding: 65px 6%;
+    }
+
+    #inicio h2 {
+        font-size: 29px;
+    }
+
+    section h2 {
+        font-size: 24px;
+    }
+
+    .contenedor-mapa-selector {
+        flex-direction: column;
+    }
+
+    #mapa-interactivo {
+        height: 300px;
+    }
+
+    .contenedor-clima,
+    .contenedor-riesgos,
+    .resultado-parcelas {
+        grid-template-columns: 1fr;
+    }
+
+    #simulador select {
+        width: 100%;
+        margin-bottom: 12px;
+    }
+
+    #simulador button {
+        width: 100%;
+    }
+
+}
+
+
+/* =====================================================
+   RESPONSIVE - CELULARES PEQUEÑOS
+===================================================== */
+
+@media (max-width: 480px) {
+
+    header h1 {
+        font-size: 22px;
+    }
+
+    nav {
+        gap: 12px;
+    }
+
+    nav a {
+        font-size: 13px;
+    }
+
+    #mapa-interactivo {
+        height: 260px;
+    }
+
+    .tarjeta-clima {
+        padding: 18px;
+    }
+
+    .tarjeta-clima p {
+        font-size: 21px;
+    }
+
+    button {
+        width: 100%;
+        margin-bottom: 8px;
+    }
+
+}

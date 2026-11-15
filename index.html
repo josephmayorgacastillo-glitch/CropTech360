@@ -1,0 +1,441 @@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>CropTech 360</title>
+
+    <link rel="stylesheet" href="estilos.css">
+
+    <!-- Leaflet -->
+    <link rel="stylesheet"
+          href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</head>
+
+<body>
+
+    <!-- ENCABEZADO -->
+
+    <header>
+
+        <div class="logo">
+            CropTech 360
+        </div>
+
+        <nav>
+            <a href="#inicio">Inicio</a>
+            <a href="#mapa">Mi parcela</a>
+            <a href="#riesgos">Riesgos</a>
+            <a href="#simulador">Simulador</a>
+            <a href="#recomendaciones">Recomendaciones</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <!-- BIENVENIDA -->
+
+        <section id="inicio" class="bienvenida">
+
+            <h1>Agricultura inteligente para un futuro sostenible</h1>
+
+            <p>
+                Analiza tu terreno, identifica riesgos climáticos
+                y descubre mejores alternativas para tus cultivos.
+            </p>
+
+            <a href="#mapa" class="boton">
+                Analizar mi parcela
+            </a>
+
+        </section>
+
+
+        <!-- MAPA INTELIGENTE DE PARCELAS -->
+
+        <section id="mapa" class="seccion mapa-con-selector">
+
+            <h2>📍 Mapa inteligente de parcelas</h2>
+
+            <p>
+                Selecciona tu cultivo y ubica tus parcelas en el mapa
+                para análisis climático y comparación.
+            </p>
+
+            <div class="contenedor-mapa-selector">
+
+                <!-- SELECTOR DE CULTIVOS Y PARCELAS -->
+
+                <div class="selector-cultivo">
+
+                    <label for="cultivo-mapa">
+                        Selecciona tu cultivo:
+                    </label>
+
+                    <select id="cultivo-mapa">
+
+                        <option value="">Seleccionar fruta o verdura</option>
+
+                        <!-- FRUTAS -->
+
+                        <optgroup label="🍎 Frutas">
+
+                            <option value="fresa">Fresa</option>
+                            <option value="pina">Piña</option>
+                            <option value="sandia">Sandía</option>
+                            <option value="melon">Melón</option>
+                            <option value="papaya">Papaya</option>
+                            <option value="banano">Banano</option>
+                            <option value="mango">Mango</option>
+                            <option value="naranja">Naranja</option>
+                            <option value="limon">Limón</option>
+                            <option value="manzana">Manzana</option>
+                            <option value="aguacate">Aguacate</option>
+                            <option value="uva">Uva</option>
+                            <option value="maracuya">Maracuyá</option>
+                            <option value="mora">Mora</option>
+                            <option value="guayaba">Guayaba</option>
+                            <option value="pitahaya">Pitahaya</option>
+                            <option value="guanabana">Guanábana</option>
+                            <option value="coco">Coco</option>
+                            <option value="durazno">Durazno</option>
+                            <option value="pera">Pera</option>
+
+                        </optgroup>
+
+
+                        <!-- VERDURAS Y HORTALIZAS -->
+
+                        <optgroup label="🥕 Verduras y hortalizas">
+
+                            <option value="tomate">Tomate</option>
+                            <option value="lechuga">Lechuga</option>
+                            <option value="zanahoria">Zanahoria</option>
+                            <option value="cebolla">Cebolla</option>
+                            <option value="chile_dulce">Chile dulce</option>
+                            <option value="pepino">Pepino</option>
+                            <option value="papa">Papa</option>
+                            <option value="yuca">Yuca</option>
+                            <option value="camote">Camote</option>
+                            <option value="brocoli">Brócoli</option>
+                            <option value="coliflor">Coliflor</option>
+                            <option value="repollo">Repollo</option>
+                            <option value="espinaca">Espinaca</option>
+                            <option value="apio">Apio</option>
+                            <option value="culantro">Culantro</option>
+                            <option value="ajo">Ajo</option>
+                            <option value="remolacha">Remolacha</option>
+                            <option value="rabano">Rábano</option>
+                            <option value="ayote">Ayote</option>
+                            <option value="zucchini">Zucchini</option>
+                            <option value="berenjena">Berenjena</option>
+                            <option value="chayote">Chayote</option>
+                            <option value="vainica">Vainica</option>
+                            <option value="elote">Elote</option>
+
+                        </optgroup>
+
+
+                        <!-- OTROS CULTIVOS -->
+
+                        <optgroup label="🌾 Otros cultivos">
+
+                            <option value="cafe">Café</option>
+                            <option value="maiz">Maíz</option>
+                            <option value="frijoles">Frijoles</option>
+                            <option value="arroz">Arroz</option>
+                            <option value="sorgo">Sorgo</option>
+
+                        </optgroup>
+
+                    </select>
+
+
+                    <button id="analizar-cultivo" class="boton" disabled>
+
+                        Mostrar zonas recomendadas
+
+                    </button>
+
+
+                    <div id="zona-recomendada-info"
+                         style="margin-top:15px; font-style:italic;">
+
+                        Selecciona un cultivo para ver zonas recomendadas.
+
+                    </div>
+
+
+                    <hr style="margin:25px 0;">
+
+
+                    <!-- SELECCIÓN DE PARCELAS -->
+
+                    <div class="selector-parcelas">
+
+                        <button id="seleccionar-a"
+                                class="boton parcela-activa">
+
+                            Seleccionar parcela A
+
+                        </button>
+
+                        <button id="seleccionar-b" class="boton">
+
+                            Seleccionar parcela B
+
+                        </button>
+
+                    </div>
+
+
+                    <!-- COORDENADAS -->
+
+                    <div class="informacion">
+
+                        <p>
+                            <strong>Parcela A:</strong>
+                            <span id="coordenadas-a">Sin seleccionar</span>
+                        </p>
+
+                        <p>
+                            <strong>Parcela B:</strong>
+                            <span id="coordenadas-b">Sin seleccionar</span>
+                        </p>
+
+                    </div>
+
+
+                    <!-- COMPARACIÓN -->
+
+                    <button id="comparar-parcelas"
+                            class="boton"
+                            style="margin-top:10px;">
+
+                        Comparar ubicaciones
+
+                    </button>
+
+
+                    <div id="resultado-comparacion"
+                         style="margin-top:20px;">
+
+                    </div>
+
+
+                    <hr style="margin:25px 0;">
+
+
+                    <!-- CONSULTA CLIMÁTICA -->
+
+                    <h3>🌤️ Análisis climático</h3>
+
+                    <div class="informacion">
+
+                        <p>
+                            <strong>Latitud:</strong>
+                            <span id="latitud">Pendiente</span>
+                        </p>
+
+                        <p>
+                            <strong>Longitud:</strong>
+                            <span id="longitud">Pendiente</span>
+                        </p>
+
+                    </div>
+
+
+                    <button id="consultar-clima" class="boton">
+
+                        Consultar datos climáticos
+
+                    </button>
+
+                </div>
+
+
+                <!-- MAPA -->
+
+                <div id="mapa-interactivo"></div>
+
+            </div>
+
+        </section>
+
+
+        <!-- INFORMACIÓN CLIMÁTICA -->
+
+        <section class="seccion">
+
+            <h2>🌤️ Información climática</h2>
+
+            <div class="tarjetas">
+
+                <div class="tarjeta">
+
+                    <h3>Temperatura</h3>
+
+                    <p id="temperatura">-- °C</p>
+
+                </div>
+
+                <div class="tarjeta">
+
+                    <h3>Precipitación</h3>
+
+                    <p id="precipitacion">-- mm</p>
+
+                </div>
+
+                <div class="tarjeta">
+
+                    <h3>Humedad del suelo</h3>
+
+                    <p id="humedad">Sin datos</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- SEMÁFORO DE RIESGOS -->
+
+        <section id="riesgos" class="seccion">
+
+            <h2>🚦 Semáforo de riesgo agrícola</h2>
+
+            <p>
+                Identifica posibles condiciones de riesgo
+                para tus cultivos.
+            </p>
+
+            <div class="tarjetas">
+
+                <div class="riesgo verde">
+
+                    <h3>🟢 Riesgo bajo</h3>
+
+                    <p>Condiciones favorables.</p>
+
+                </div>
+
+                <div class="riesgo amarillo">
+
+                    <h3>🟡 Riesgo moderado</h3>
+
+                    <p>Se requiere seguimiento.</p>
+
+                </div>
+
+                <div class="riesgo rojo">
+
+                    <h3>🔴 Riesgo alto</h3>
+
+                    <p>Se requiere atención.</p>
+
+                </div>
+
+            </div>
+
+            <div id="resultado-riesgo">
+
+                Selecciona una parcela para analizar el riesgo.
+
+            </div>
+
+        </section>
+
+
+        <!-- SIMULADOR DE ROTACIÓN DE CULTIVOS -->
+
+        <section id="simulador" class="seccion">
+
+            <h2>🌾 Simulador de rotación de cultivos</h2>
+
+            <p>
+                Compara diferentes alternativas de rotación
+                durante tres años.
+            </p>
+
+            <div class="contenedor-simulador">
+
+               <label for="cultivo">
+                    Selecciona tu cultivo actual:
+                 </label>
+
+                 <select id="cultivo">
+                 <option value="maiz">Maíz</option>
+                  <option value="frijoles">Frijoles</option>
+                  <option value="arroz">Arroz</option>
+                  <option value="sorgo">Sorgo</option>
+                 </select>
+ 
+                 <button id="simular" class="boton">
+                  Generar simulación
+             </button>
+
+             <div id="resultados-simulacion">
+                <h3>Resultados de la simulación</h3>
+                    <p>Aquí aparecerán las alternativas de rotación.</p>
+                  </div>
+                <canvas id="grafico-rotacion"></canvas>
+             </div>
+
+        </section>
+
+
+        <!-- RECOMENDACIONES -->
+
+        <section id="recomendaciones" class="seccion">
+
+            <h2>💡 Recomendaciones agrícolas</h2>
+
+            <div id="lista-recomendaciones">
+
+                <p>
+                    Aquí aparecerán las recomendaciones
+                    según las condiciones de tu parcela.
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer>
+
+        <h3>CropTech 360</h3>
+
+        <p>
+            Tecnología e innovación para una agricultura sostenible.
+        </p>
+
+        <p>Proyecto de agricultura inteligente | 2026</p>
+
+    </footer>
+
+
+    <!-- LIBRERÍAS Y JAVASCRIPT -->
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
