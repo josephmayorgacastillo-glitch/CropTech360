@@ -1,6 +1,5 @@
-
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -21,7 +20,7 @@
 
 <body>
 
-    <!-- ENCABEZADO -->
+    <!-- HEADER -->
 
     <header>
 
@@ -30,11 +29,11 @@
         </div>
 
         <nav>
-            <a href="#inicio">Inicio</a>
-            <a href="#mapa">Mi parcela</a>
-            <a href="#riesgos">Riesgos</a>
-            <a href="#simulador">Simulador</a>
-            <a href="#recomendaciones">Recomendaciones</a>
+            <a href="#inicio">Home</a>
+            <a href="#mapa">My Plot</a>
+            <a href="#riesgos">Risks</a>
+            <a href="#simulador">Simulator</a>
+            <a href="#recomendaciones">Recommendations</a>
         </nav>
 
     </header>
@@ -42,118 +41,118 @@
 
     <main>
 
-        <!-- BIENVENIDA -->
+        <!-- WELCOME SECTION -->
 
         <section id="inicio" class="bienvenida">
 
-            <h1>Agricultura inteligente para un futuro sostenible</h1>
+            <h1>Smart Agriculture for a Sustainable Future</h1>
 
             <p>
-                Analiza tu terreno, identifica riesgos climáticos
-                y descubre mejores alternativas para tus cultivos.
+                Analyze your land, identify climate risks
+                and discover better alternatives for your crops.
             </p>
 
             <a href="#mapa" class="boton">
-                Analizar mi parcela
+                Analyze My Plot
             </a>
 
         </section>
 
 
-        <!-- MAPA INTELIGENTE DE PARCELAS -->
+        <!-- SMART PLOT MAP -->
 
         <section id="mapa" class="seccion mapa-con-selector">
 
-            <h2>📍 Mapa inteligente de parcelas</h2>
+            <h2>📍 Smart Plot Map</h2>
 
             <p>
-                Selecciona tu cultivo y ubica tus parcelas en el mapa
-                para análisis climático y comparación.
+                Select your crop and locate your plots on the map
+                for climate analysis and comparison.
             </p>
 
             <div class="contenedor-mapa-selector">
 
-                <!-- SELECTOR DE CULTIVOS Y PARCELAS -->
+                <!-- CROP AND PLOT SELECTOR -->
 
                 <div class="selector-cultivo">
 
                     <label for="cultivo-mapa">
-                        Selecciona tu cultivo:
+                        Select your crop:
                     </label>
 
                     <select id="cultivo-mapa">
 
-                        <option value="">Seleccionar fruta o verdura</option>
+                        <option value="">Select a fruit or vegetable</option>
 
-                        <!-- FRUTAS -->
+                        <!-- FRUITS -->
 
-                        <optgroup label="🍎 Frutas">
+                        <optgroup label="🍎 Fruits">
 
-                            <option value="fresa">Fresa</option>
-                            <option value="pina">Piña</option>
-                            <option value="sandia">Sandía</option>
-                            <option value="melon">Melón</option>
+                            <option value="fresa">Strawberry</option>
+                            <option value="pina">Pineapple</option>
+                            <option value="sandia">Watermelon</option>
+                            <option value="melon">Melon</option>
                             <option value="papaya">Papaya</option>
-                            <option value="banano">Banano</option>
+                            <option value="banano">Banana</option>
                             <option value="mango">Mango</option>
-                            <option value="naranja">Naranja</option>
-                            <option value="limon">Limón</option>
-                            <option value="manzana">Manzana</option>
-                            <option value="aguacate">Aguacate</option>
-                            <option value="uva">Uva</option>
-                            <option value="maracuya">Maracuyá</option>
-                            <option value="mora">Mora</option>
-                            <option value="guayaba">Guayaba</option>
-                            <option value="pitahaya">Pitahaya</option>
-                            <option value="guanabana">Guanábana</option>
-                            <option value="coco">Coco</option>
-                            <option value="durazno">Durazno</option>
-                            <option value="pera">Pera</option>
+                            <option value="naranja">Orange</option>
+                            <option value="limon">Lemon</option>
+                            <option value="manzana">Apple</option>
+                            <option value="aguacate">Avocado</option>
+                            <option value="uva">Grapes</option>
+                            <option value="maracuya">Passion Fruit</option>
+                            <option value="mora">Blackberry</option>
+                            <option value="guayaba">Guava</option>
+                            <option value="pitahaya">Dragon Fruit</option>
+                            <option value="guanabana">Soursop</option>
+                            <option value="coco">Coconut</option>
+                            <option value="durazno">Peach</option>
+                            <option value="pera">Pear</option>
 
                         </optgroup>
 
 
-                        <!-- VERDURAS Y HORTALIZAS -->
+                        <!-- VEGETABLES AND GREENS -->
 
-                        <optgroup label="🥕 Verduras y hortalizas">
+                        <optgroup label="🥕 Vegetables and Greens">
 
-                            <option value="tomate">Tomate</option>
-                            <option value="lechuga">Lechuga</option>
-                            <option value="zanahoria">Zanahoria</option>
-                            <option value="cebolla">Cebolla</option>
-                            <option value="chile_dulce">Chile dulce</option>
-                            <option value="pepino">Pepino</option>
-                            <option value="papa">Papa</option>
-                            <option value="yuca">Yuca</option>
-                            <option value="camote">Camote</option>
-                            <option value="brocoli">Brócoli</option>
-                            <option value="coliflor">Coliflor</option>
-                            <option value="repollo">Repollo</option>
-                            <option value="espinaca">Espinaca</option>
-                            <option value="apio">Apio</option>
-                            <option value="culantro">Culantro</option>
-                            <option value="ajo">Ajo</option>
-                            <option value="remolacha">Remolacha</option>
-                            <option value="rabano">Rábano</option>
-                            <option value="ayote">Ayote</option>
+                            <option value="tomate">Tomato</option>
+                            <option value="lechuga">Lettuce</option>
+                            <option value="zanahoria">Carrot</option>
+                            <option value="cebolla">Onion</option>
+                            <option value="chile_dulce">Sweet Pepper</option>
+                            <option value="pepino">Cucumber</option>
+                            <option value="papa">Potato</option>
+                            <option value="yuca">Cassava</option>
+                            <option value="camote">Sweet Potato</option>
+                            <option value="brocoli">Broccoli</option>
+                            <option value="coliflor">Cauliflower</option>
+                            <option value="repollo">Cabbage</option>
+                            <option value="espinaca">Spinach</option>
+                            <option value="apio">Celery</option>
+                            <option value="culantro">Cilantro</option>
+                            <option value="ajo">Garlic</option>
+                            <option value="remolacha">Beetroot</option>
+                            <option value="rabano">Radish</option>
+                            <option value="ayote">Squash</option>
                             <option value="zucchini">Zucchini</option>
-                            <option value="berenjena">Berenjena</option>
+                            <option value="berenjena">Eggplant</option>
                             <option value="chayote">Chayote</option>
-                            <option value="vainica">Vainica</option>
-                            <option value="elote">Elote</option>
+                            <option value="vainica">Green Beans</option>
+                            <option value="elote">Corn</option>
 
                         </optgroup>
 
 
-                        <!-- OTROS CULTIVOS -->
+                        <!-- OTHER CROPS -->
 
-                        <optgroup label="🌾 Otros cultivos">
+                        <optgroup label="🌾 Other Crops">
 
-                            <option value="cafe">Café</option>
-                            <option value="maiz">Maíz</option>
-                            <option value="frijoles">Frijoles</option>
-                            <option value="arroz">Arroz</option>
-                            <option value="sorgo">Sorgo</option>
+                            <option value="cafe">Coffee</option>
+                            <option value="maiz">Corn</option>
+                            <option value="frijoles">Beans</option>
+                            <option value="arroz">Rice</option>
+                            <option value="sorgo">Sorghum</option>
 
                         </optgroup>
 
@@ -162,7 +161,7 @@
 
                     <button id="analizar-cultivo" class="boton" disabled>
 
-                        Mostrar zonas recomendadas
+                        Show Recommended Areas
 
                     </button>
 
@@ -170,7 +169,7 @@
                     <div id="zona-recomendada-info"
                          style="margin-top:15px; font-style:italic;">
 
-                        Selecciona un cultivo para ver zonas recomendadas.
+                        Select a crop to view recommended areas.
 
                     </div>
 
@@ -178,50 +177,50 @@
                     <hr style="margin:25px 0;">
 
 
-                    <!-- SELECCIÓN DE PARCELAS -->
+                    <!-- PLOT SELECTION -->
 
                     <div class="selector-parcelas">
 
                         <button id="seleccionar-a"
                                 class="boton parcela-activa">
 
-                            Seleccionar parcela A
+                            Select Plot A
 
                         </button>
 
                         <button id="seleccionar-b" class="boton">
 
-                            Seleccionar parcela B
+                            Select Plot B
 
                         </button>
 
                     </div>
 
 
-                    <!-- COORDENADAS -->
+                    <!-- COORDINATES -->
 
                     <div class="informacion">
 
                         <p>
-                            <strong>Parcela A:</strong>
-                            <span id="coordenadas-a">Sin seleccionar</span>
+                            <strong>Plot A:</strong>
+                            <span id="coordenadas-a">Not selected</span>
                         </p>
 
                         <p>
-                            <strong>Parcela B:</strong>
-                            <span id="coordenadas-b">Sin seleccionar</span>
+                            <strong>Plot B:</strong>
+                            <span id="coordenadas-b">Not selected</span>
                         </p>
 
                     </div>
 
 
-                    <!-- COMPARACIÓN -->
+                    <!-- COMPARISON -->
 
                     <button id="comparar-parcelas"
                             class="boton"
                             style="margin-top:10px;">
 
-                        Comparar ubicaciones
+                        Compare Locations
 
                     </button>
 
@@ -235,20 +234,20 @@
                     <hr style="margin:25px 0;">
 
 
-                    <!-- CONSULTA CLIMÁTICA -->
+                    <!-- CLIMATE INFORMATION -->
 
-                    <h3>🌤️ Análisis climático</h3>
+                    <h3>🌤️ Climate Analysis</h3>
 
                     <div class="informacion">
 
                         <p>
-                            <strong>Latitud:</strong>
-                            <span id="latitud">Pendiente</span>
+                            <strong>Latitude:</strong>
+                            <span id="latitud">Pending</span>
                         </p>
 
                         <p>
-                            <strong>Longitud:</strong>
-                            <span id="longitud">Pendiente</span>
+                            <strong>Longitude:</strong>
+                            <span id="longitud">Pending</span>
                         </p>
 
                     </div>
@@ -256,14 +255,14 @@
 
                     <button id="consultar-clima" class="boton">
 
-                        Consultar datos climáticos
+                        Check Climate Data
 
                     </button>
 
                 </div>
 
 
-                <!-- MAPA -->
+                <!-- MAP -->
 
                 <div id="mapa-interactivo"></div>
 
@@ -272,17 +271,17 @@
         </section>
 
 
-        <!-- INFORMACIÓN CLIMÁTICA -->
+        <!-- CLIMATE INFORMATION -->
 
         <section class="seccion">
 
-            <h2>🌤️ Información climática</h2>
+            <h2>🌤️ Climate Information</h2>
 
             <div class="tarjetas">
 
                 <div class="tarjeta">
 
-                    <h3>Temperatura</h3>
+                    <h3>Temperature</h3>
 
                     <p id="temperatura">-- °C</p>
 
@@ -290,7 +289,7 @@
 
                 <div class="tarjeta">
 
-                    <h3>Precipitación</h3>
+                    <h3>Precipitation</h3>
 
                     <p id="precipitacion">-- mm</p>
 
@@ -298,9 +297,9 @@
 
                 <div class="tarjeta">
 
-                    <h3>Humedad del suelo</h3>
+                    <h3>Soil Moisture</h3>
 
-                    <p id="humedad">Sin datos</p>
+                    <p id="humedad">No data</p>
 
                 </div>
 
@@ -309,40 +308,40 @@
         </section>
 
 
-        <!-- SEMÁFORO DE RIESGOS -->
+        <!-- RISK TRAFFIC LIGHT -->
 
         <section id="riesgos" class="seccion">
 
-            <h2>🚦 Semáforo de riesgo agrícola</h2>
+            <h2>🚦 Agricultural Risk Traffic Light</h2>
 
             <p>
-                Identifica posibles condiciones de riesgo
-                para tus cultivos.
+                Identify possible risk conditions
+                for your crops.
             </p>
 
             <div class="tarjetas">
 
                 <div class="riesgo verde">
 
-                    <h3>🟢 Riesgo bajo</h3>
+                    <h3>🟢 Low Risk</h3>
 
-                    <p>Condiciones favorables.</p>
+                    <p>Favorable conditions.</p>
 
                 </div>
 
                 <div class="riesgo amarillo">
 
-                    <h3>🟡 Riesgo moderado</h3>
+                    <h3>🟡 Moderate Risk</h3>
 
-                    <p>Se requiere seguimiento.</p>
+                    <p>Monitoring is required.</p>
 
                 </div>
 
                 <div class="riesgo rojo">
 
-                    <h3>🔴 Riesgo alto</h3>
+                    <h3>🔴 High Risk</h3>
 
-                    <p>Se requiere atención.</p>
+                    <p>Attention is required.</p>
 
                 </div>
 
@@ -350,44 +349,44 @@
 
             <div id="resultado-riesgo">
 
-                Selecciona una parcela para analizar el riesgo.
+                Select a plot to analyze the risk.
 
             </div>
 
         </section>
 
 
-        <!-- SIMULADOR DE ROTACIÓN DE CULTIVOS -->
+        <!-- CROP ROTATION SIMULATOR -->
 
         <section id="simulador" class="seccion">
 
-            <h2>🌾 Simulador de rotación de cultivos</h2>
+            <h2>🌾 Crop Rotation Simulator</h2>
 
             <p>
-                Compara diferentes alternativas de rotación
-                durante tres años.
+                Compare different crop rotation alternatives
+                over three years.
             </p>
 
             <div class="contenedor-simulador">
 
                <label for="cultivo">
-                    Selecciona tu cultivo actual:
+                    Select your current crop:
                  </label>
 
                  <select id="cultivo">
-                 <option value="maiz">Maíz</option>
-                  <option value="frijoles">Frijoles</option>
-                  <option value="arroz">Arroz</option>
-                  <option value="sorgo">Sorgo</option>
+                 <option value="maiz">Corn</option>
+                  <option value="frijoles">Beans</option>
+                  <option value="arroz">Rice</option>
+                  <option value="sorgo">Sorghum</option>
                  </select>
  
                  <button id="simular" class="boton">
-                  Generar simulación
+                  Generate Simulation
              </button>
 
              <div id="resultados-simulacion">
-                <h3>Resultados de la simulación</h3>
-                    <p>Aquí aparecerán las alternativas de rotación.</p>
+                <h3>Simulation Results</h3>
+                    <p>Crop rotation alternatives will appear here.</p>
                   </div>
                 <canvas id="grafico-rotacion"></canvas>
              </div>
@@ -395,17 +394,17 @@
         </section>
 
 
-        <!-- RECOMENDACIONES -->
+        <!-- RECOMMENDATIONS -->
 
         <section id="recomendaciones" class="seccion">
 
-            <h2>💡 Recomendaciones agrícolas</h2>
+            <h2>💡 Agricultural Recommendations</h2>
 
             <div id="lista-recomendaciones">
 
                 <p>
-                    Aquí aparecerán las recomendaciones
-                    según las condiciones de tu parcela.
+                    Recommendations based on your plot's
+                    conditions will appear here.
                 </p>
 
             </div>
@@ -422,15 +421,15 @@
         <h3>CropTech 360</h3>
 
         <p>
-            Tecnología e innovación para una agricultura sostenible.
+            Technology and innovation for sustainable agriculture.
         </p>
 
-        <p>Proyecto de agricultura inteligente | 2026</p>
+        <p>Smart Agriculture Project | 2026</p>
 
     </footer>
 
 
-    <!-- LIBRERÍAS Y JAVASCRIPT -->
+    <!-- LIBRARIES AND JAVASCRIPT -->
 
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 

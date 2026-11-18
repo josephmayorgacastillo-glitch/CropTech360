@@ -1,11 +1,11 @@
 // =====================================================
 // CropTech 360
-// Sistema agrícola inteligente
+// Smart Agriculture System
 // =====================================================
 
 
 // =====================================================
-// 1. VARIABLES GLOBALES
+// 1. GLOBAL VARIABLES
 // =====================================================
 
 let latSeleccionada = 10;
@@ -28,7 +28,7 @@ let capaZonasRecomendadas = null;
 
 
 // =====================================================
-// 2. INICIALIZACIÓN
+// 2. INITIALIZATION
 // =====================================================
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -69,13 +69,13 @@ document.addEventListener("DOMContentLoaded", () => {
             if (informacion) {
                 informacion.textContent =
                     this.value === ""
-                        ? "Selecciona un cultivo."
-                        : "Presiona el botón para visualizar las zonas.";
+                        ? "Select a crop."
+                        : "Press the button to view the areas.";
             }
 
         });
 
-    // Evento del simulador de rotación
+    // Crop rotation simulator event
     document.getElementById("simular")
         ?.addEventListener("click", generarSimulacion);
 
@@ -87,7 +87,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // =====================================================
-// 3. ANIMACIÓN DE ENTRADA
+// 3. ENTRY ANIMATION
 // =====================================================
 
 function iniciarAnimacion() {
@@ -104,7 +104,7 @@ function iniciarAnimacion() {
 
 
 // =====================================================
-// 4. INICIAR MAPA
+// 4. INITIALIZE MAP
 // =====================================================
 
 function iniciarMapa() {
@@ -113,7 +113,7 @@ function iniciarMapa() {
 
     if (!elementoMapa || typeof L === "undefined") {
 
-        console.error("No se encontró Leaflet o el contenedor del mapa.");
+        console.error("Leaflet or the map container could not be found.");
 
         return;
 
@@ -152,7 +152,7 @@ function iniciarMapa() {
 
 
 // =====================================================
-// 5. ACTUALIZAR COORDENADAS
+// 5. UPDATE COORDINATES
 // =====================================================
 
 function actualizarCoordenadas(lat, lon) {
@@ -169,7 +169,7 @@ function actualizarCoordenadas(lat, lon) {
 
 
 // =====================================================
-// 6. SELECCIONAR PARCELA
+// 6. SELECT PLOT
 // =====================================================
 
 function seleccionarParcela(letra) {
@@ -182,13 +182,13 @@ function seleccionarParcela(letra) {
     document.getElementById("seleccionar-b")
         ?.classList.toggle("parcela-activa", letra === "B");
 
-    alert("Selecciona en el mapa la ubicación de la parcela " + letra + ".");
+    alert("Select the location of plot " + letra + " on the map.");
 
 }
 
 
 // =====================================================
-// 7. REGISTRAR UBICACIONES
+// 7. REGISTER LOCATIONS
 // =====================================================
 
 function registrarUbicacion(lat, lon) {
@@ -219,7 +219,7 @@ function registrarUbicacion(lat, lon) {
 
             marcadorA = L.marker([lat, lon])
                 .addTo(mapa)
-                .bindPopup("Parcela A");
+                .bindPopup("Plot A");
 
         }
 
@@ -244,7 +244,7 @@ function registrarUbicacion(lat, lon) {
 
             marcadorB = L.marker([lat, lon])
                 .addTo(mapa)
-                .bindPopup("Parcela B");
+                .bindPopup("Plot B");
 
         }
 
@@ -254,7 +254,7 @@ function registrarUbicacion(lat, lon) {
 
 
 // =====================================================
-// 8. OBTENER DATOS CLIMÁTICOS
+// 8. GET CLIMATE DATA
 // =====================================================
 
 async function obtenerClima(lat, lon) {
@@ -286,7 +286,7 @@ async function obtenerClima(lat, lon) {
 
     if (!respuesta.ok) {
 
-        throw new Error("Error al consultar el servicio climático.");
+        throw new Error("Error while retrieving climate data.");
 
     }
 
@@ -296,7 +296,7 @@ async function obtenerClima(lat, lon) {
 
 
 // =====================================================
-// 9. CONSULTAR CLIMA
+// 9. CHECK CLIMATE
 // =====================================================
 
 async function consultarClima() {
@@ -307,7 +307,7 @@ async function consultarClima() {
 
         boton.disabled = true;
 
-        boton.textContent = "Consultando...";
+        boton.textContent = "Loading...";
 
     }
 
@@ -335,7 +335,7 @@ async function consultarClima() {
         if (resultado) {
 
             resultado.textContent =
-                "No se pudieron obtener los datos climáticos.";
+                "Climate data could not be retrieved.";
 
         }
 
@@ -345,7 +345,7 @@ async function consultarClima() {
 
             boton.disabled = false;
 
-            boton.textContent = "Consultar clima";
+            boton.textContent = "Check Climate";
 
         }
 
@@ -355,7 +355,7 @@ async function consultarClima() {
 
 
 // =====================================================
-// 10. ÍNDICE DE HORA ACTUAL
+// 10. CURRENT HOUR INDEX
 // =====================================================
 
 function indiceHoraActual(datos) {
@@ -370,7 +370,7 @@ function indiceHoraActual(datos) {
 
 
 // =====================================================
-// 11. MOSTRAR CLIMA
+// 11. DISPLAY CLIMATE DATA
 // =====================================================
 
 function mostrarClima(datos) {
@@ -404,7 +404,7 @@ function mostrarClima(datos) {
 
         humedad.textContent = humedadSuelo != null
             ? (humedadSuelo * 100).toFixed(0) + " %"
-            : "Sin datos";
+            : "No data";
 
     }
 
@@ -412,22 +412,22 @@ function mostrarClima(datos) {
 
 
 // =====================================================
-// 12. CLASIFICAR HUMEDAD
+// 12. CLASSIFY MOISTURE
 // =====================================================
 
 function clasificarHumedad(valor) {
 
-    if (valor < 0.15) return "Seco";
+    if (valor < 0.15) return "Dry";
 
-    if (valor < 0.35) return "Adecuado";
+    if (valor < 0.35) return "Adequate";
 
-    return "Saturado";
+    return "Saturated";
 
 }
 
 
 // =====================================================
-// 13. EVALUAR RIESGOS
+// 13. EVALUATE RISKS
 // =====================================================
 
 function evaluarRiesgo(datos) {
@@ -453,13 +453,13 @@ function evaluarRiesgo(datos) {
 
         puntos += 2;
 
-        motivos.push("Temperatura elevada");
+        motivos.push("High temperature");
 
     } else if (temperatura > 31) {
 
         puntos++;
 
-        motivos.push("Temperatura moderadamente alta");
+        motivos.push("Moderately high temperature");
 
     }
 
@@ -467,13 +467,13 @@ function evaluarRiesgo(datos) {
 
         puntos += 2;
 
-        motivos.push("Lluvias intensas");
+        motivos.push("Heavy rainfall");
 
     } else if (lluvia > 25) {
 
         puntos++;
 
-        motivos.push("Lluvias abundantes");
+        motivos.push("Abundant rainfall");
 
     }
 
@@ -481,13 +481,13 @@ function evaluarRiesgo(datos) {
 
         puntos += 2;
 
-        motivos.push("Suelo muy seco");
+        motivos.push("Very dry soil");
 
     } else if (humedad < 0.15 || humedad > 0.45) {
 
         puntos++;
 
-        motivos.push("Humedad del suelo fuera del rango de referencia");
+        motivos.push("Soil moisture outside the reference range");
 
     }
 
@@ -499,19 +499,19 @@ function evaluarRiesgo(datos) {
 
         nivel = "rojo";
 
-        texto = "🔴 Riesgo alto";
+        texto = "🔴 High Risk";
 
     } else if (puntos >= 1) {
 
         nivel = "amarillo";
 
-        texto = "🟡 Riesgo moderado";
+        texto = "🟡 Moderate Risk";
 
     } else {
 
         nivel = "verde";
 
-        texto = "🟢 Riesgo bajo";
+        texto = "🟢 Low Risk";
 
     }
 
@@ -533,7 +533,7 @@ function evaluarRiesgo(datos) {
             `<strong>${texto}</strong><br>` +
             (motivos.length
                 ? motivos.join(", ")
-                : "Condiciones climáticas estables.");
+                : "Stable climate conditions.");
 
     }
 
@@ -541,7 +541,7 @@ function evaluarRiesgo(datos) {
 
 
 // =====================================================
-// 14. RECOMENDACIONES
+// 14. RECOMMENDATIONS
 // =====================================================
 
 function mostrarRecomendaciones(datos) {
@@ -562,7 +562,7 @@ function mostrarRecomendaciones(datos) {
     if (humedad < 0.15) {
 
         recomendaciones.push(
-            "💧 El suelo presenta poca humedad. Revisa las necesidades de riego."
+            "💧 The soil has low moisture levels. Check irrigation requirements."
         );
 
     }
@@ -570,7 +570,7 @@ function mostrarRecomendaciones(datos) {
     if (humedad > 0.45) {
 
         recomendaciones.push(
-            "🌊 El suelo presenta mucha humedad. Revisa el drenaje."
+            "🌊 The soil has high moisture levels. Check drainage."
         );
 
     }
@@ -578,7 +578,7 @@ function mostrarRecomendaciones(datos) {
     if (lluvia > 80) {
 
         recomendaciones.push(
-            "🌧️ Se esperan lluvias abundantes. Vigila los cultivos y el drenaje."
+            "🌧️ Heavy rainfall is expected. Monitor crops and drainage."
         );
 
     }
@@ -586,7 +586,7 @@ function mostrarRecomendaciones(datos) {
     if (lluvia < 10) {
 
         recomendaciones.push(
-            "☀️ Se esperan pocas precipitaciones. Monitorea la humedad del suelo."
+            "☀️ Low rainfall is expected. Monitor soil moisture."
         );
 
     }
@@ -594,7 +594,7 @@ function mostrarRecomendaciones(datos) {
     if (temperatura > 32) {
 
         recomendaciones.push(
-            "🌡️ Se esperan temperaturas altas. Vigila el estrés térmico de los cultivos."
+            "🌡️ High temperatures are expected. Monitor crop heat stress."
         );
 
     }
@@ -602,7 +602,7 @@ function mostrarRecomendaciones(datos) {
     if (recomendaciones.length === 0) {
 
         recomendaciones.push(
-            "✅ Las condiciones climáticas se mantienen estables. Continúa monitoreando."
+            "✅ Climate conditions remain stable. Continue monitoring."
         );
 
     }
@@ -621,7 +621,7 @@ function mostrarRecomendaciones(datos) {
 
 
 // =====================================================
-// 15. PANEL DE ENFERMEDADES
+// 15. DISEASE PANEL
 // =====================================================
 
 function crearPanelEnfermedades() {
@@ -642,21 +642,21 @@ function crearPanelEnfermedades() {
 
     panel.innerHTML = `
 
-        <h2>🦠 Alertas de posibles enfermedades agrícolas</h2>
+        <h2>🦠 Agricultural Disease Alerts</h2>
 
         <p>
-            Análisis de condiciones climáticas que pueden favorecer
-            algunas enfermedades.
+            Analysis of climate conditions that may favor
+            certain diseases.
         </p>
 
         <div id="alertas-enfermedades">
 
-            Consulta el clima para generar alertas.
+            Check the weather to generate alerts.
 
         </div>
 
         <small>
-            Estas alertas son preventivas y no representan un diagnóstico.
+            These alerts are preventive and do not represent a diagnosis.
         </small>
 
     `;
@@ -667,7 +667,7 @@ function crearPanelEnfermedades() {
 
 
 // =====================================================
-// 16. EVALUAR ENFERMEDADES
+// 16. EVALUATE DISEASES
 // =====================================================
 
 function evaluarEnfermedades(datos) {
@@ -688,10 +688,10 @@ function evaluarEnfermedades(datos) {
 
             nivel: "alto",
 
-            titulo: "Posible riesgo de enfermedades fúngicas",
+            titulo: "Possible risk of fungal diseases",
 
             descripcion:
-                "La humedad y las precipitaciones pueden favorecer algunos hongos."
+                "Humidity and rainfall may favor the growth of certain fungi."
 
         });
 
@@ -701,10 +701,10 @@ function evaluarEnfermedades(datos) {
 
             nivel: "moderado",
 
-            titulo: "Vigilancia de enfermedades fúngicas",
+            titulo: "Monitor for fungal diseases",
 
             descripcion:
-                "Las condiciones requieren monitoreo de hojas y tallos."
+                "Conditions require monitoring of leaves and stems."
 
         });
 
@@ -716,10 +716,10 @@ function evaluarEnfermedades(datos) {
 
             nivel: "moderado",
 
-            titulo: "Condiciones favorables para algunas enfermedades",
+            titulo: "Conditions favorable for certain diseases",
 
             descripcion:
-                "Se recomienda vigilar el estado de los cultivos."
+                "Monitoring crop health is recommended."
 
         });
 
@@ -736,7 +736,7 @@ function evaluarEnfermedades(datos) {
 
             <div class="alerta-enfermedad bajo">
 
-                🟢 No se detectaron condiciones climáticas destacadas de alerta.
+                🟢 No significant climate-related warning conditions were detected.
 
             </div>
 
@@ -762,7 +762,7 @@ function evaluarEnfermedades(datos) {
 
 
 // =====================================================
-// 17. COMPARAR PARCELAS
+// 17. COMPARE PLOTS
 // =====================================================
 
 async function compararParcelas() {
@@ -773,14 +773,14 @@ async function compararParcelas() {
     if (!ubicacionA || !ubicacionB) {
 
         resultado.textContent =
-            "Primero debes seleccionar las parcelas A y B.";
+            "You must first select plots A and B.";
 
         return;
 
     }
 
     resultado.textContent =
-        "Consultando información climática...";
+        "Retrieving climate information...";
 
     try {
 
@@ -836,15 +836,15 @@ async function compararParcelas() {
 
         if (puntuacionA > puntuacionB) {
 
-            ganador = "La parcela A tiene mejores indicadores climáticos.";
+            ganador = "Plot A has better climate indicators.";
 
         } else if (puntuacionB > puntuacionA) {
 
-            ganador = "La parcela B tiene mejores indicadores climáticos.";
+            ganador = "Plot B has better climate indicators.";
 
         } else {
 
-            ganador = "Ambas parcelas presentan indicadores similares.";
+            ganador = "Both plots have similar indicators.";
 
         }
 
@@ -854,53 +854,53 @@ async function compararParcelas() {
 
                 <div class="tarjeta-comparacion">
 
-                    <h3>🌱 Parcela A</h3>
+                    <h3>🌱 Plot A</h3>
 
-                    <p>Temperatura: ${temperaturaA.toFixed(1)} °C</p>
+                    <p>Temperature: ${temperaturaA.toFixed(1)} °C</p>
 
-                    <p>Humedad ambiental: ${humedadA}%</p>
+                    <p>Relative Humidity: ${humedadA}%</p>
 
-                    <p>Precipitación: ${lluviaA.toFixed(1)} mm</p>
+                    <p>Precipitation: ${lluviaA.toFixed(1)} mm</p>
 
-                    <p>Humedad del suelo:
+                    <p>Soil Moisture:
                         ${sueloA != null
                             ? (sueloA * 100).toFixed(0) + "%"
-                            : "Sin datos"}
+                            : "No data"}
                     </p>
 
-                    <p>Puntuación: ${puntuacionA}/100</p>
+                    <p>Score: ${puntuacionA}/100</p>
 
                 </div>
 
                 <div class="tarjeta-comparacion">
 
-                    <h3>🌾 Parcela B</h3>
+                    <h3>🌾 Plot B</h3>
 
-                    <p>Temperatura: ${temperaturaB.toFixed(1)} °C</p>
+                    <p>Temperature: ${temperaturaB.toFixed(1)} °C</p>
 
-                    <p>Humedad ambiental: ${humedadB}%</p>
+                    <p>Relative Humidity: ${humedadB}%</p>
 
-                    <p>Precipitación: ${lluviaB.toFixed(1)} mm</p>
+                    <p>Precipitation: ${lluviaB.toFixed(1)} mm</p>
 
-                    <p>Humedad del suelo:
+                    <p>Soil Moisture:
                         ${sueloB != null
                             ? (sueloB * 100).toFixed(0) + "%"
-                            : "Sin datos"}
+                            : "No data"}
                     </p>
 
-                    <p>Puntuación: ${puntuacionB}/100</p>
+                    <p>Score: ${puntuacionB}/100</p>
 
                 </div>
 
             </div>
 
-            <h3>🏆 Resultado</h3>
+            <h3>🏆 Result</h3>
 
             <p>${ganador}</p>
 
             <small>
-                La puntuación es orientativa y no sustituye un análisis
-                agronómico del suelo.
+                The score is indicative and does not replace a soil
+                agronomic analysis.
             </small>
 
         `;
@@ -910,7 +910,7 @@ async function compararParcelas() {
         console.error(error);
 
         resultado.textContent =
-            "No fue posible comparar las parcelas. Intenta nuevamente.";
+            "The plots could not be compared. Please try again.";
 
     }
 
@@ -918,7 +918,7 @@ async function compararParcelas() {
 
 
 // =====================================================
-// 18. PUNTUACIÓN DE PARCELAS
+// 18. PLOT SCORE
 // =====================================================
 
 function calcularPuntuacionParcela(
@@ -961,11 +961,11 @@ function calcularPuntuacionParcela(
 
 
 // =====================================================
-// 19. ZONAS DEMOSTRATIVAS POR CULTIVO
+// 19. DEMONSTRATION AREAS BY CROP
 // =====================================================
 
-// Ubicaciones de ejemplo para visualizar en el mapa.
-// No representan zonas oficiales de aptitud agrícola.
+// Example locations for map visualization.
+// They do not represent official agricultural suitability areas.
 
 function crearZona(lat, lon, radio, color, descripcion) {
 
@@ -982,216 +982,216 @@ function crearZona(lat, lon, radio, color, descripcion) {
 
 const zonasCultivos = {
 
-    // FRUTAS
+    // FRUITS
 
     fresa: [
-        crearZona(10.05, -84.10, 15000, "red", "Zona demostrativa para fresa.")
+        crearZona(10.05, -84.10, 15000, "red", "Demonstration area for strawberries.")
     ],
 
     pina: [
-        crearZona(10.15, -83.75, 20000, "orange", "Zona demostrativa para piña.")
+        crearZona(10.15, -83.75, 20000, "orange", "Demonstration area for pineapples.")
     ],
 
     sandia: [
-        crearZona(9.45, -84.15, 20000, "green", "Zona demostrativa para sandía.")
+        crearZona(9.45, -84.15, 20000, "green", "Demonstration area for watermelons.")
     ],
 
     melon: [
-        crearZona(10.05, -85.45, 20000, "orange", "Zona demostrativa para melón.")
+        crearZona(10.05, -85.45, 20000, "orange", "Demonstration area for melons.")
     ],
 
     papaya: [
-        crearZona(9.95, -84.30, 18000, "green", "Zona demostrativa para papaya.")
+        crearZona(9.95, -84.30, 18000, "green", "Demonstration area for papayas.")
     ],
 
     banano: [
-        crearZona(9.65, -82.85, 22000, "green", "Zona demostrativa para banano.")
+        crearZona(9.65, -82.85, 22000, "green", "Demonstration area for bananas.")
     ],
 
     mango: [
-        crearZona(9.90, -84.55, 18000, "orange", "Zona demostrativa para mango.")
+        crearZona(9.90, -84.55, 18000, "orange", "Demonstration area for mangoes.")
     ],
 
     naranja: [
-        crearZona(10.45, -84.65, 18000, "orange", "Zona demostrativa para naranja.")
+        crearZona(10.45, -84.65, 18000, "orange", "Demonstration area for oranges.")
     ],
 
     limon: [
-        crearZona(9.85, -83.10, 15000, "green", "Zona demostrativa para limón.")
+        crearZona(9.85, -83.10, 15000, "green", "Demonstration area for lemons.")
     ],
 
     manzana: [
-        crearZona(9.65, -83.85, 12000, "red", "Zona demostrativa para manzana.")
+        crearZona(9.65, -83.85, 12000, "red", "Demonstration area for apples.")
     ],
 
     aguacate: [
-        crearZona(9.75, -84.25, 18000, "green", "Zona demostrativa para aguacate.")
+        crearZona(9.75, -84.25, 18000, "green", "Demonstration area for avocados.")
     ],
 
     uva: [
-        crearZona(10.00, -84.20, 12000, "purple", "Zona demostrativa para uva.")
+        crearZona(10.00, -84.20, 12000, "purple", "Demonstration area for grapes.")
     ],
 
     maracuya: [
-        crearZona(10.10, -84.35, 15000, "purple", "Zona demostrativa para maracuyá.")
+        crearZona(10.10, -84.35, 15000, "purple", "Demonstration area for passion fruit.")
     ],
 
     mora: [
-        crearZona(9.70, -83.80, 12000, "purple", "Zona demostrativa para mora.")
+        crearZona(9.70, -83.80, 12000, "purple", "Demonstration area for blackberries.")
     ],
 
     guayaba: [
-        crearZona(10.00, -84.45, 15000, "green", "Zona demostrativa para guayaba.")
+        crearZona(10.00, -84.45, 15000, "green", "Demonstration area for guavas.")
     ],
 
     pitahaya: [
-        crearZona(10.05, -84.50, 15000, "red", "Zona demostrativa para pitahaya.")
+        crearZona(10.05, -84.50, 15000, "red", "Demonstration area for dragon fruit.")
     ],
 
     guanabana: [
-        crearZona(9.90, -84.00, 18000, "green", "Zona demostrativa para guanábana.")
+        crearZona(9.90, -84.00, 18000, "green", "Demonstration area for soursop.")
     ],
 
     coco: [
-        crearZona(9.60, -82.90, 20000, "green", "Zona demostrativa para coco.")
+        crearZona(9.60, -82.90, 20000, "green", "Demonstration area for coconuts.")
     ],
 
     durazno: [
-        crearZona(9.65, -83.85, 12000, "orange", "Zona demostrativa para durazno.")
+        crearZona(9.65, -83.85, 12000, "orange", "Demonstration area for peaches.")
     ],
 
     pera: [
-        crearZona(9.65, -83.85, 12000, "purple", "Zona demostrativa para pera.")
+        crearZona(9.65, -83.85, 12000, "purple", "Demonstration area for pears.")
     ],
 
 
-    // VERDURAS Y HORTALIZAS
+    // VEGETABLES AND GREENS
 
     tomate: [
-        crearZona(10.00, -84.20, 15000, "red", "Zona demostrativa para tomate.")
+        crearZona(10.00, -84.20, 15000, "red", "Demonstration area for tomatoes.")
     ],
 
     lechuga: [
-        crearZona(9.95, -84.10, 12000, "green", "Zona demostrativa para lechuga.")
+        crearZona(9.95, -84.10, 12000, "green", "Demonstration area for lettuce.")
     ],
 
     zanahoria: [
-        crearZona(9.70, -83.85, 12000, "orange", "Zona demostrativa para zanahoria.")
+        crearZona(9.70, -83.85, 12000, "orange", "Demonstration area for carrots.")
     ],
 
     cebolla: [
-        crearZona(9.85, -83.90, 12000, "purple", "Zona demostrativa para cebolla.")
+        crearZona(9.85, -83.90, 12000, "purple", "Demonstration area for onions.")
     ],
 
     chile_dulce: [
-        crearZona(10.00, -84.15, 15000, "red", "Zona demostrativa para chile dulce.")
+        crearZona(10.00, -84.15, 15000, "red", "Demonstration area for sweet peppers.")
     ],
 
     pepino: [
-        crearZona(9.90, -84.25, 15000, "green", "Zona demostrativa para pepino.")
+        crearZona(9.90, -84.25, 15000, "green", "Demonstration area for cucumbers.")
     ],
 
     papa: [
-        crearZona(9.65, -83.85, 12000, "brown", "Zona demostrativa para papa.")
+        crearZona(9.65, -83.85, 12000, "brown", "Demonstration area for potatoes.")
     ],
 
     yuca: [
-        crearZona(10.00, -83.50, 18000, "orange", "Zona demostrativa para yuca.")
+        crearZona(10.00, -83.50, 18000, "orange", "Demonstration area for cassava.")
     ],
 
     camote: [
-        crearZona(9.90, -84.30, 15000, "orange", "Zona demostrativa para camote.")
+        crearZona(9.90, -84.30, 15000, "orange", "Demonstration area for sweet potatoes.")
     ],
 
     brocoli: [
-        crearZona(9.70, -83.85, 12000, "green", "Zona demostrativa para brócoli.")
+        crearZona(9.70, -83.85, 12000, "green", "Demonstration area for broccoli.")
     ],
 
     coliflor: [
-        crearZona(9.70, -83.85, 12000, "purple", "Zona demostrativa para coliflor.")
+        crearZona(9.70, -83.85, 12000, "purple", "Demonstration area for cauliflower.")
     ],
 
     repollo: [
-        crearZona(9.70, -83.85, 12000, "green", "Zona demostrativa para repollo.")
+        crearZona(9.70, -83.85, 12000, "green", "Demonstration area for cabbage.")
     ],
 
     espinaca: [
-        crearZona(9.95, -84.10, 12000, "green", "Zona demostrativa para espinaca.")
+        crearZona(9.95, -84.10, 12000, "green", "Demonstration area for spinach.")
     ],
 
     apio: [
-        crearZona(9.75, -83.90, 12000, "green", "Zona demostrativa para apio.")
+        crearZona(9.75, -83.90, 12000, "green", "Demonstration area for celery.")
     ],
 
     culantro: [
-        crearZona(10.00, -84.20, 12000, "green", "Zona demostrativa para culantro.")
+        crearZona(10.00, -84.20, 12000, "green", "Demonstration area for cilantro.")
     ],
 
     ajo: [
-        crearZona(9.70, -83.85, 12000, "purple", "Zona demostrativa para ajo.")
+        crearZona(9.70, -83.85, 12000, "purple", "Demonstration area for garlic.")
     ],
 
     remolacha: [
-        crearZona(9.70, -83.85, 12000, "red", "Zona demostrativa para remolacha.")
+        crearZona(9.70, -83.85, 12000, "red", "Demonstration area for beets.")
     ],
 
     rabano: [
-        crearZona(9.95, -84.10, 12000, "red", "Zona demostrativa para rábano.")
+        crearZona(9.95, -84.10, 12000, "red", "Demonstration area for radishes.")
     ],
 
     ayote: [
-        crearZona(10.00, -84.30, 15000, "orange", "Zona demostrativa para ayote.")
+        crearZona(10.00, -84.30, 15000, "orange", "Demonstration area for squash.")
     ],
 
     zucchini: [
-        crearZona(9.95, -84.10, 12000, "green", "Zona demostrativa para zucchini.")
+        crearZona(9.95, -84.10, 12000, "green", "Demonstration area for zucchini.")
     ],
 
     berenjena: [
-        crearZona(9.90, -84.25, 15000, "purple", "Zona demostrativa para berenjena.")
+        crearZona(9.90, -84.25, 15000, "purple", "Demonstration area for eggplants.")
     ],
 
     chayote: [
-        crearZona(10.20, -84.30, 15000, "green", "Zona demostrativa para chayote.")
+        crearZona(10.20, -84.30, 15000, "green", "Demonstration area for chayote.")
     ],
 
     vainica: [
-        crearZona(9.95, -84.20, 15000, "green", "Zona demostrativa para vainica.")
+        crearZona(9.95, -84.20, 15000, "green", "Demonstration area for green beans.")
     ],
 
     elote: [
-        crearZona(10.00, -84.15, 15000, "orange", "Zona demostrativa para elote.")
+        crearZona(10.00, -84.15, 15000, "orange", "Demonstration area for corn.")
     ],
 
 
-    // OTROS CULTIVOS
+    // OTHER CROPS
 
     cafe: [
-        crearZona(9.8, -84.1, 20000, "green", "Zona demostrativa para café."),
-        crearZona(10.0, -83.9, 15000, "green", "Zona demostrativa para café.")
+        crearZona(9.8, -84.1, 20000, "green", "Demonstration area for coffee."),
+        crearZona(10.0, -83.9, 15000, "green", "Demonstration area for coffee.")
     ],
 
     maiz: [
-        crearZona(9.9, -84.05, 12000, "orange", "Zona demostrativa para maíz.")
+        crearZona(9.9, -84.05, 12000, "orange", "Demonstration area for corn.")
     ],
 
     frijoles: [
-        crearZona(10.0, -84.2, 15000, "blue", "Zona demostrativa para frijoles.")
+        crearZona(10.0, -84.2, 15000, "blue", "Demonstration area for beans.")
     ],
 
     arroz: [
-        crearZona(9.4, -84.1, 18000, "purple", "Zona demostrativa para arroz.")
+        crearZona(9.4, -84.1, 18000, "purple", "Demonstration area for rice.")
     ],
 
     sorgo: [
-        crearZona(9.6, -84.0, 15000, "orange", "Zona demostrativa para sorgo.")
+        crearZona(9.6, -84.0, 15000, "orange", "Demonstration area for sorghum.")
     ]
 
 };
 
 
 // =====================================================
-// 20. MOSTRAR ZONAS RECOMENDADAS
+// 20. DISPLAY RECOMMENDED AREAS
 // =====================================================
 
 function mostrarZonasRecomendadas(cultivo) {
@@ -1213,7 +1213,7 @@ function mostrarZonasRecomendadas(cultivo) {
 
         if (informacion) {
             informacion.textContent =
-                "No hay zonas disponibles para este cultivo.";
+                "No areas are available for this crop.";
         }
 
         return;
@@ -1250,7 +1250,7 @@ function mostrarZonasRecomendadas(cultivo) {
     if (informacion) {
 
         informacion.textContent =
-            "Zonas demostrativas para el cultivo seleccionado. No son recomendaciones agronómicas oficiales.";
+            "Demonstration areas for the selected crop. These are not official agricultural recommendations.";
 
     }
 
@@ -1258,32 +1258,32 @@ function mostrarZonasRecomendadas(cultivo) {
 
 
 // =====================================================
-// 21. DATOS DE ROTACIÓN DE CULTIVOS
+// 21. CROP ROTATION DATA
 // =====================================================
 
 const rotaciones = {
 
     maiz: {
 
-        nombre: "Maíz",
+        nombre: "Corn",
 
         opciones: [
 
             {
-                nombre: "Monocultivo",
-                cultivos: ["Maíz", "Maíz", "Maíz"],
+                nombre: "Monoculture",
+                cultivos: ["Corn", "Corn", "Corn"],
                 salud: [70, 62, 54]
             },
 
             {
-                nombre: "Rotación tradicional",
-                cultivos: ["Maíz", "Frijoles", "Maíz"],
+                nombre: "Traditional Rotation",
+                cultivos: ["Corn", "Beans", "Corn"],
                 salud: [70, 78, 80]
             },
 
             {
-                nombre: "Rotación diversificada",
-                cultivos: ["Maíz", "Frijoles", "Sorgo"],
+                nombre: "Diversified Rotation",
+                cultivos: ["Corn", "Beans", "Sorghum"],
                 salud: [70, 78, 84]
             }
 
@@ -1293,25 +1293,25 @@ const rotaciones = {
 
     frijoles: {
 
-        nombre: "Frijoles",
+        nombre: "Beans",
 
         opciones: [
 
             {
-                nombre: "Monocultivo",
-                cultivos: ["Frijoles", "Frijoles", "Frijoles"],
+                nombre: "Monoculture",
+                cultivos: ["Beans", "Beans", "Beans"],
                 salud: [72, 66, 60]
             },
 
             {
-                nombre: "Rotación tradicional",
-                cultivos: ["Frijoles", "Maíz", "Frijoles"],
+                nombre: "Traditional Rotation",
+                cultivos: ["Beans", "Corn", "Beans"],
                 salud: [72, 74, 82]
             },
 
             {
-                nombre: "Rotación diversificada",
-                cultivos: ["Frijoles", "Sorgo", "Maíz"],
+                nombre: "Diversified Rotation",
+                cultivos: ["Beans", "Sorghum", "Corn"],
                 salud: [72, 76, 85]
             }
 
@@ -1321,25 +1321,25 @@ const rotaciones = {
 
     arroz: {
 
-        nombre: "Arroz",
+        nombre: "Rice",
 
         opciones: [
 
             {
-                nombre: "Monocultivo",
-                cultivos: ["Arroz", "Arroz", "Arroz"],
+                nombre: "Monoculture",
+                cultivos: ["Rice", "Rice", "Rice"],
                 salud: [68, 60, 52]
             },
 
             {
-                nombre: "Rotación tradicional",
-                cultivos: ["Arroz", "Frijoles", "Arroz"],
+                nombre: "Traditional Rotation",
+                cultivos: ["Rice", "Beans", "Rice"],
                 salud: [68, 76, 78]
             },
 
             {
-                nombre: "Rotación diversificada",
-                cultivos: ["Arroz", "Sorgo", "Frijoles"],
+                nombre: "Diversified Rotation",
+                cultivos: ["Rice", "Sorghum", "Beans"],
                 salud: [68, 72, 84]
             }
 
@@ -1349,25 +1349,25 @@ const rotaciones = {
 
     sorgo: {
 
-        nombre: "Sorgo",
+        nombre: "Sorghum",
 
         opciones: [
 
             {
-                nombre: "Monocultivo",
-                cultivos: ["Sorgo", "Sorgo", "Sorgo"],
+                nombre: "Monoculture",
+                cultivos: ["Sorghum", "Sorghum", "Sorghum"],
                 salud: [71, 65, 59]
             },
 
             {
-                nombre: "Rotación tradicional",
-                cultivos: ["Sorgo", "Frijoles", "Maíz"],
+                nombre: "Traditional Rotation",
+                cultivos: ["Sorghum", "Beans", "Corn"],
                 salud: [71, 79, 81]
             },
 
             {
-                nombre: "Rotación diversificada",
-                cultivos: ["Sorgo", "Maíz", "Frijoles"],
+                nombre: "Diversified Rotation",
+                cultivos: ["Sorghum", "Corn", "Beans"],
                 salud: [71, 75, 86]
             }
 
@@ -1379,7 +1379,7 @@ const rotaciones = {
 
 
 // =====================================================
-// 22. GENERAR SIMULACIÓN DE ROTACIÓN
+// 22. GENERATE CROP ROTATION SIMULATION
 // =====================================================
 
 function generarSimulacion() {
@@ -1394,7 +1394,7 @@ function generarSimulacion() {
 
     if (!selector || !contenedor || !canvas) {
 
-        console.error("Faltan elementos del simulador en el HTML.");
+        console.error("Simulator elements are missing from the HTML.");
 
         return;
 
@@ -1406,9 +1406,9 @@ function generarSimulacion() {
 
         contenedor.innerHTML = `
 
-            <h3>Resultados de la simulación</h3>
+            <h3>Simulation Results</h3>
 
-            <p>Selecciona un cultivo para comenzar la simulación.</p>
+            <p>Select a crop to start the simulation.</p>
 
         `;
 
@@ -1428,7 +1428,7 @@ function generarSimulacion() {
 
 
     // ---------------------------------
-    // IDENTIFICAR MEJOR ALTERNATIVA
+    // IDENTIFY THE BEST ALTERNATIVE
     // ---------------------------------
 
     const mejor = datos.opciones.reduce((a, b) => {
@@ -1439,15 +1439,15 @@ function generarSimulacion() {
 
 
     // ---------------------------------
-    // MOSTRAR RESULTADOS
+    // DISPLAY RESULTS
     // ---------------------------------
 
     contenedor.innerHTML = `
 
-        <h3>📊 Resultados de la simulación</h3>
+        <h3>📊 Simulation Results</h3>
 
         <p>
-            Cultivo inicial:
+            Initial Crop:
             <strong>${datos.nombre}</strong>
         </p>
 
@@ -1464,38 +1464,38 @@ function generarSimulacion() {
 
                         <h3>${opcion.nombre}</h3>
 
-                        <p><strong>Rotación durante tres años:</strong></p>
+                        <p><strong>Three-Year Crop Rotation:</strong></p>
 
                         <ul>
 
                             <li>
-                                Año 1: ${opcion.cultivos[0]}
+                                Year 1: ${opcion.cultivos[0]}
                             </li>
 
                             <li>
-                                Año 2: ${opcion.cultivos[1]}
+                                Year 2: ${opcion.cultivos[1]}
                             </li>
 
                             <li>
-                                Año 3: ${opcion.cultivos[2]}
+                                Year 3: ${opcion.cultivos[2]}
                             </li>
 
                         </ul>
 
                         <p>
-                            Fertilidad inicial:
+                            Initial Fertility:
                             <strong>${opcion.salud[0]}%</strong>
                         </p>
 
                         <p>
-                            Fertilidad final:
+                            Final Fertility:
                             <strong>${opcion.salud[2]}%</strong>
                         </p>
 
                         <p>
-                            Variación:
+                            Variation:
                             <strong>
-                                ${variacion > 0 ? "+" : ""}${variacion} puntos
+                                ${variacion > 0 ? "+" : ""}${variacion} points
                             </strong>
                         </p>
 
@@ -1509,44 +1509,44 @@ function generarSimulacion() {
 
         <div class="recomendacion-rotacion">
 
-            <h3>🏆 Mejor alternativa</h3>
+            <h3>🏆 Best Alternative</h3>
 
             <p>
                 ${mejor.nombre}
             </p>
 
             <p>
-                Secuencia:
+                Sequence:
                 ${mejor.cultivos.join(" → ")}
             </p>
 
             <p>
-                Índice final de salud del suelo:
+                Final Soil Health Index:
                 <strong>${mejor.salud[2]}%</strong>
             </p>
 
             <p>
-                Esta alternativa presenta el mejor resultado
-                dentro de los escenarios demostrativos.
+                This alternative provides the best result
+                among the demonstration scenarios.
             </p>
 
         </div>
 
         <small>
-            Los porcentajes son valores simulados con fines educativos.
-            No representan mediciones reales de fertilidad del suelo.
+            The percentages are simulated values for educational purposes.
+            They do not represent actual soil fertility measurements.
         </small>
 
     `;
 
 
     // ---------------------------------
-    // COMPROBAR CHART.JS
+    // CHECK CHART.JS
     // ---------------------------------
 
     if (typeof Chart === "undefined") {
 
-        console.error("Chart.js no está cargado.");
+        console.error("Chart.js is not loaded.");
 
         return;
 
@@ -1554,7 +1554,7 @@ function generarSimulacion() {
 
 
     // ---------------------------------
-    // ELIMINAR GRÁFICO ANTERIOR
+    // REMOVE PREVIOUS CHART
     // ---------------------------------
 
     if (graficoRotacion) {
@@ -1567,7 +1567,7 @@ function generarSimulacion() {
 
 
     // ---------------------------------
-    // CREAR GRÁFICO
+    // CREATE CHART
     // ---------------------------------
 
     graficoRotacion = new Chart(canvas, {
@@ -1577,9 +1577,9 @@ function generarSimulacion() {
         data: {
 
             labels: [
-                "Año 1",
-                "Año 2",
-                "Año 3"
+                "Year 1",
+                "Year 2",
+                "Year 3"
             ],
 
             datasets: datos.opciones.map((opcion, indice) => ({
@@ -1624,7 +1624,7 @@ function generarSimulacion() {
 
                     display: true,
 
-                    text: "Evolución de la fertilidad del suelo"
+                    text: "Soil Fertility Progression"
 
                 },
 
@@ -1650,7 +1650,7 @@ function generarSimulacion() {
 
                         display: true,
 
-                        text: "Índice simulado de fertilidad (%)"
+                        text: "Simulated Fertility Index (%)"
 
                     }
 
@@ -1662,7 +1662,7 @@ function generarSimulacion() {
 
                         display: true,
 
-                        text: "Periodo de rotación"
+                        text: "Rotation Period"
 
                     }
 
@@ -1678,5 +1678,5 @@ function generarSimulacion() {
 
 
 // =====================================================
-// FIN DEL SCRIPT
+// END OF SCRIPT
 // =====================================================
